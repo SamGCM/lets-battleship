@@ -2,15 +2,20 @@ package com.battleship;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //As linha abaixo são só para teste das funcionalidades.
-        Board player = new Board();
-        player.buildBoard();
+        Player player = new Player();
+        Computer computer = new Computer();
         player.showBoard();
-        player.setBoard('e', 5, '-');
+        player.putRandomSubmarines(99);
         player.showBoard();
-        System.out.println(player.getPositionValue('e', 5));
+        computer.putRandomSubmarines(1);
+        computer.showBoard();
+        System.out.println("");
+        System.out.println("LETS PLAY");
+        player.putBomb('E', 5, computer);
+        computer.putRandomBomb(player);
     }
 
 }

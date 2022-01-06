@@ -6,6 +6,9 @@ public class Board {
 
     private char[][] board = new char[10][10];
 
+    public Board() {
+        this.buildBoard();
+    }
 
     public void buildBoard(){
         for(int i = 0; i < board.length; i++){
@@ -33,8 +36,6 @@ public class Board {
     }
 
     public void setBoard(char row, int collumn, char value){
-
-
         int rowInt = transformLetterInNumber(row);
         board[rowInt][collumn] = value;
     }
