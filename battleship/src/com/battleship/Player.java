@@ -48,19 +48,23 @@ public class Player {
         boolean error = true;
         char row = 0;
         int col = 0;
-        System.out.println("Digite uma posição:\n");
-        String positionInput = sc.next();
-        while(positionInput.length() == 3 || positionInput.length() == 1 || error){
-            try{
+        System.out.println("Digite uma posição de A-J e 0-9:");
+        sc.nextLine();
+        String positionInput = sc.nextLine();
 
-                row = getRowOfInput(positionInput);
-                col = getColOfInput(positionInput);
-                if(positionInput.matches("^[K-Zk-z]*\\d+[K-Zk-z]*$")){
+
+        while(error){
+            try{
+                String input = positionInput.replaceAll("\\s","");
+                System.out.println(positionInput);
+                row = getRowOfInput(input);
+                col = getColOfInput(input);
+                if(positionInput.matches("^[K-Zk-z]*+[K-Zk-z]*$") || positionInput.length() < 2 || positionInput.length() > 3){
                     throw new Throwable();
                 } { error = false;}
 
             } catch (Throwable e){
-                System.out.println("Uma posição válida só tem 1 letra e 1 número:");
+                System.out.println("Uma posição válida só tem 1 letra e 1 número, por exemplo: a1 ou 1a");
                 error = true;
                 positionInput = sc.next();
             }
@@ -71,11 +75,31 @@ public class Player {
 
     public boolean setSub() throws Exception {
 //        Função exclusiva para player, onde pega os dados inseridos no console.
-        System.out.println("Digite uma posição:");
-        String positionInput = sc.next();
-        char row = getRowOfInput(positionInput);
-        int col = getColOfInput(positionInput);
-        return putSubmarine(row, col);
+        boolean error = true;
+        char row = 0;
+        int col = 0;
+        System.out.println("Digite uma posição de A-J e 0-9:");
+        sc.nextLine();
+        String positionInput = sc.nextLine();
+        while(error){
+            try{
+                String input = positionInput.replaceAll("\\s","");
+                System.out.println(positionInput);
+                row = getRowOfInput(input);
+                col = getColOfInput(input);
+                if(positionInput.matches("^[K-Zk-z]*+[K-Zk-z]*$") || positionInput.length() < 2 || positionInput.length() > 3){
+                    throw new Throwable();
+                } { error = false;}
+
+            } catch (Throwable e){
+                System.out.println("Uma posição válida só tem 1 letra e 1 número, por exemplo: a1 ou 1a");
+                System.out.println("Digite uma posição de A-J e 0-9:");
+                error = true;
+                positionInput = sc.next();
+            }
+        }
+
+        return putSubmarine(row,col);
     }
 
 

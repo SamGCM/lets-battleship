@@ -26,7 +26,8 @@ public class Main {
 
             System.out.println("LETS PLAY");
             while(finishGame){
-                if(player.getScore() == 0){
+                if(player.getScore() == 10){
+                    player.showBoard();
                     computer.showBoard();
                     System.out.printf("====    VENCEDOR    ====\n" +
                                     "====    JOGADOR    ====\n" +
@@ -39,8 +40,8 @@ public class Main {
 
                 } { player.setBomb(computer); }
 
-
                 if(computer.getScore() == 1) {
+                    player.showBoard();
                     computer.showBoard();
                     System.out.printf(
                             "====        VENCEDOR      ====\n" +
