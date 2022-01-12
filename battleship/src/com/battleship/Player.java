@@ -9,17 +9,17 @@ public class Player {
     private String name;
     private int numSubSet;
 
-    public Player(){
+    public Player(String name){
         this.score = 0;
         this.name = "Jogador";
-        this.board = new Board();
+        this.board = new Board(name);
         this.numSubSet = 0;
     }
 
     Scanner sc = new Scanner(System.in);
 
     public boolean howSetSubs() {
-        String mode = sc.next();
+        String mode = sc.nextLine();
             try {
                 switch (mode) {
                     case "1":
@@ -45,11 +45,12 @@ public class Player {
     public boolean setBomb(Player opponent) {
 //        Função exclusiva para player, onde pega os dados inseridos no console.
         this.board.showBoard();
+        this.board.showScore(this, opponent);
         boolean error = true;
         char row = 0;
         int col = 0;
         System.out.println("Digite uma posição de A-J e 0-9:");
-        sc.nextLine();
+
         String positionInput = sc.nextLine();
 
 

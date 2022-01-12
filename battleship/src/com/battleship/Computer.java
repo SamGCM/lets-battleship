@@ -6,8 +6,8 @@ public class Computer extends Player {
 
     private String name;
 
-    public Computer() {
-        super();
+    public Computer(String name) {
+        super(name);
         setName("Computer");
     }
 
