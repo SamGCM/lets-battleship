@@ -9,8 +9,8 @@ public class Main {
             boolean finishGame = true;
 
             //As linha abaixo são só para teste das funcionalidades.
-            Player player = new Player();
-            Computer computer = new Computer();
+            Player player = new Player("Jogador");
+            Computer computer = new Computer("Computador");
 
 //        FASE DE POSICIONAMENTO DE NAVIOS
             System.out.println("Você deseja colocar os submarinos de que forma?");
