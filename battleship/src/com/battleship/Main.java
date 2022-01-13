@@ -27,34 +27,36 @@ public class Main {
             System.out.println("LETS PLAY");
             while(finishGame){
                 if(player.getScore() == 10){
+                    Beep.main();
                     player.showBoard();
                     computer.showBoard();
-                    System.out.printf("====    VENCEDOR    ====\n" +
-                                    "====    JOGADOR    ====\n" +
-                                    "==================\n" +
-                                    "====    PONTUAÇÃO    ====\n" +
-                                    "====   COMPUTADOR: %d    ====\n" +
-                                    "====    JOGADOR: %d    ===="
-                            , player.getScore(), computer.getScore());
+                    System.out.printf(
+                        "====    VENCEDOR    ====\n" +
+                        "====    JOGADOR    ====\n" +
+                        "==================\n" +
+                        "====    PONTUAÇÃO    ====\n" +
+                        "====   COMPUTADOR: %d    ====\n" +
+                        "====    JOGADOR: %d    ====",
+                        player.getScore(), computer.getScore());
                     break;
 
                 } { player.setBomb(computer); }
 
-                if(computer.getScore() == 1) {
+                if(computer.getScore() == 10) {
+                    Beep.main();
                     player.showBoard();
                     computer.showBoard();
                     System.out.printf(
-                            "====        VENCEDOR      ====\n" +
-                                    "====       COMPUTADOR     ====\n" +
-                                    "==============================\n" +
-                                    "====       PONTUAÇÃO      ====\n" +
-                                    "====    COMPUTADOR: %d    ====\n" +
-                                    "====       JOGADOR: %d    ====\n \n"
-                            , player.getScore(), computer.getScore());
+                        "====        VENCEDOR      ====\n" +
+                        "====       COMPUTADOR     ====\n" +
+                        "==============================\n" +
+                        "====       PONTUAÇÃO      ====\n" +
+                        "====    COMPUTADOR: %d    ====\n" +
+                        "====       JOGADOR: %d    ====\n \n",
+                        player.getScore(), computer.getScore());
                     break;
                 } {computer.putRandomBomb(player);}
             }
-
             keepPlay = player.tryAgain();
         }
     }

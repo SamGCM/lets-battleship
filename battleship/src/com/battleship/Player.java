@@ -2,6 +2,7 @@ package com.battleship;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class Player {
 
     private int score;
@@ -65,8 +66,10 @@ public class Player {
 
             } catch (Throwable e){
                 System.out.println("Uma posição válida só tem 1 letra e 1 número, por exemplo: a1 ou 1a");
+                System.out.println("Digite uma posição de A-J e 0-9:");
+                Beep.main();
                 error = true;
-                positionInput = sc.next();
+                positionInput = sc.nextLine();
             }
         }
 
@@ -94,8 +97,9 @@ public class Player {
             } catch (Throwable e){
                 System.out.println("Uma posição válida só tem 1 letra e 1 número, por exemplo: a1 ou 1a");
                 System.out.println("Digite uma posição de A-J e 0-9:");
+                Beep.main();
                 error = true;
-                positionInput = sc.next();
+                positionInput = sc.nextLine();
             }
         }
 
@@ -128,6 +132,7 @@ public class Player {
             boolean hit = opponent.checkHit(row, column);
             if(hit){
                 System.out.println(this.name + " acertou um navio inimigo!");
+                Beep.main();
                 this.waitTwoSecPlease();
                 switch(token){
                     case ' ':
@@ -161,6 +166,7 @@ public class Player {
         // Se já tiver um submarino na posição, return false
         if(token == 'N'){
             System.out.printf("A posição %c%d está ocupada.\n", row,column);
+            Beep.main();
             return false;
         } else if (token == ' ') {
             // Se não tiver, coloca o submarino e return true
