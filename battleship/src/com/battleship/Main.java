@@ -25,6 +25,7 @@ public class Main {
             }
 
             System.out.println("LETS PLAY");
+            Beep.main();
             while(finishGame){
                 if(player.getScore() == 10){
                     player.showBoard();
