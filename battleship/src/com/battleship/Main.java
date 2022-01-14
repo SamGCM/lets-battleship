@@ -4,6 +4,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         boolean keepPlay = true;
+        int playerScoreWinner = 1; // Set 1 for test.
+        int computerScoreWinner = 1; // Set 1 for test.
+
         while(keepPlay) {
             boolean choosenPlay = true;
             boolean finishGame = true;
@@ -27,33 +30,38 @@ public class Main {
             System.out.println("LETS PLAY");
             Beep.main();
             while(finishGame){
-                if(player.getScore() == 10){
-                    player.showBoard();
-                    computer.showBoard();
-                    System.out.printf("====    VENCEDOR    ====\n" +
-                                    "====    JOGADOR    ====\n" +
-                                    "==================\n" +
-                                    "====    PONTUAÇÃO    ====\n" +
-                                    "====   COMPUTADOR: %d    ====\n" +
-                                    "====    JOGADOR: %d    ===="
-                            , player.getScore(), computer.getScore());
-                    break;
 
-                } { player.setBomb(computer); }
+                player.setBomb(computer);
 
-                if(computer.getScore() == 1) {
+                if(player.getScore() == playerScoreWinner){
                     player.showBoard();
                     computer.showBoard();
                     System.out.printf(
-                            "====        VENCEDOR      ====\n" +
+                                      "====        VENCEDOR      ====\n" +
+                                      "====        JOGADOR       ====\n" +
+                                      "==============================\n" +
+                                      "====       PONTUAÇÃO      ====\n" +
+                                      "====    COMPUTADOR: %d    ====\n" +
+                                      "====      JOGADOR: %d      ====\n \n"
+                            , player.getScore(), computer.getScore());
+                    break;
+                }else{
+                    computer.putRandomBomb(player);
+                }
+
+                if(computer.getScore() == computerScoreWinner) {
+                    player.showBoard();
+                    computer.showBoard();
+                    System.out.printf(
+                                    "====        VENCEDOR      ====\n" +
                                     "====       COMPUTADOR     ====\n" +
                                     "==============================\n" +
                                     "====       PONTUAÇÃO      ====\n" +
-                                    "====    COMPUTADOR: %d    ====\n" +
+                                    "====    COMPUTADOR: %d   ====\n" +
                                     "====       JOGADOR: %d    ====\n \n"
                             , player.getScore(), computer.getScore());
                     break;
-                } {computer.putRandomBomb(player);}
+                }
             }
 
             keepPlay = player.tryAgain();
