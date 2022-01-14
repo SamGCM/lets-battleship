@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         boolean keepPlay = true;
-        int playerScoreWinner = 1; // Set 1 for test.
-        int computerScoreWinner = 1; // Set 1 for test.
+        int playerScoreWinner = 10; // Set 1 for test.
+        int computerScoreWinner = 10; // Set 1 for test.
 
         while(keepPlay) {
             boolean choosenPlay = true;
