@@ -42,7 +42,7 @@ public class Player {
             }
     }
 
-    public boolean setBomb(Player opponent) {
+    public void setBomb(Player opponent) throws Error {
 //        Função exclusiva para player, onde pega os dados inseridos no console.
         this.board.showBoard();
         this.board.showScore(this, opponent);
@@ -53,7 +53,6 @@ public class Player {
 
         String positionInput = sc.nextLine();
 
-
         while(error){
             try{
                 String input = positionInput.replaceAll("\\s","");
@@ -62,16 +61,18 @@ public class Player {
                 col = getColOfInput(input);
                 if(positionInput.matches("^[K-Zk-z]*+[K-Zk-z]*$") || positionInput.length() < 2 || positionInput.length() > 3){
                     throw new Throwable();
-                } { error = false;}
+                } else if (putBomb(row,col, opponent)){
+                    error = false;
+                } else {
+                    throw new Exception();
+                }
 
             } catch (Throwable e){
-                System.out.println("Uma posição válida só tem 1 letra e 1 número, por exemplo: a1 ou 1a");
+                System.out.println("Posição inválida ou digitada de forma incorreta.\nDigite uma posição de A-J e 0-9:");
                 error = true;
                 positionInput = sc.next();
             }
         }
-
-        return putBomb(row,col, opponent);
     }
 
     public boolean setSub() throws Exception {
@@ -129,6 +130,7 @@ public class Player {
             boolean hit = opponent.checkHit(row, column);
             if(hit){
                 System.out.println(this.name + " acertou um navio inimigo!");
+                Beep.main();
                 this.waitTwoSecPlease();
                 switch(token){
                     case ' ':
